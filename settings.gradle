@@ -1,2 +1,3 @@
 rootProject.name = 'QA25_FirstSeleniumProject'
+include 'homework_01'
 
