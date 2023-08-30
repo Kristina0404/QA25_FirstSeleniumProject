@@ -25,27 +25,27 @@ public class CreateAccountTest extends TestBase {
         //first name
         driver.findElement(By.xpath("//input[@id='FirstName']")).click();
         driver.findElement(By.xpath("//input[@id='FirstName']")).clear();
-        driver.findElement(By.xpath("//input[@id='FirstName']")).sendKeys("Ivan");
+        driver.findElement(By.xpath("//input[@id='FirstName']")).sendKeys("Petr");
         //last name
         driver.findElement(By.xpath("//input[@id='LastName']")).click();
         driver.findElement(By.xpath("//input[@id='LastName']")).clear();
-        driver.findElement(By.xpath("//input[@id='LastName']")).sendKeys("Ivanov");
+        driver.findElement(By.xpath("//input[@id='LastName']")).sendKeys("Petrov");
         // email
         driver.findElement(By.xpath("//input[@id='Email']")).click();
         driver.findElement(By.xpath("//input[@id='Email']")).clear();
-        driver.findElement(By.xpath("//input[@id='Email']")).sendKeys("haha@gmail.com");
+        driver.findElement(By.xpath("//input[@id='Email']")).sendKeys("petrov@gmail.com");
         //password
         driver.findElement(By.xpath("//input[@id='Password']")).click();
         driver.findElement(By.xpath("//input[@id='Password']")).clear();
-        driver.findElement(By.xpath("//input[@id='Password']")).sendKeys("Picacho123$");
+        driver.findElement(By.xpath("//input[@id='Password']")).sendKeys("Petrov123$");
         //confirm password
         driver.findElement(By.xpath("//input[@id='ConfirmPassword']")).click();
         driver.findElement(By.xpath("//input[@id='ConfirmPassword']")).clear();
-        driver.findElement(By.xpath("//input[@id='ConfirmPassword']")).sendKeys("Picacho123$");
+        driver.findElement(By.xpath("//input[@id='ConfirmPassword']")).sendKeys("Petrov123$");
         // registration button
         driver.findElement(By.xpath("//input[@id='register-button']")).click();
 
-        Assert.assertTrue(isElementPresent(By.cssSelector("[href='/login']")));
+        Assert.assertTrue(isElementPresent(By.cssSelector(".result")));
 
     }
 }
