@@ -27,10 +27,7 @@ public class CreateAccountTest extends TestBase {
         //last name
         type(By.xpath("//input[@id='LastName']"), "Petrov");
         // email
-        type(By.xpath("//input[@id='Email']"), "petrov@gmail.com");
-
-        //password
-        type(By.xpath("//input[@id='Password']"), "Petrov123$");
+        fillLoginForm("petrov@gmail.com", "Petrov123$");
         //confirm password
         type(By.xpath("//input[@id='ConfirmPassword']"), "Petrov123$");
         // registration button
