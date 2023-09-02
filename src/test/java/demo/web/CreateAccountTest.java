@@ -12,40 +12,32 @@ public class CreateAccountTest extends TestBase {
 
     public void ensurePrecondition() {
         if (!isElementPresent(By.xpath("//a[text()= 'Register']"))) {
-            driver.findElement(By.cssSelector(
-                    "//a[text()= 'Log in']")).click();
+            click(By.cssSelector(
+                    "//a[text()= 'Log in']"));
         }
-        driver.findElement(By.xpath("//a[text()= 'Register']")).click();
+        click(By.xpath("//a[text()= 'Register']"));
     }
 
     @Test
     public void newUserRegistrationPositiveTest() {
         //gender
-        driver.findElement(By.xpath("//input[@id='gender-male']")).click();
+        click(By.xpath("//input[@id='gender-male']"));
         //first name
-        driver.findElement(By.xpath("//input[@id='FirstName']")).click();
-        driver.findElement(By.xpath("//input[@id='FirstName']")).clear();
-        driver.findElement(By.xpath("//input[@id='FirstName']")).sendKeys("Petr");
+        type(By.xpath("//input[@id='FirstName']"), "Petr");
         //last name
-        driver.findElement(By.xpath("//input[@id='LastName']")).click();
-        driver.findElement(By.xpath("//input[@id='LastName']")).clear();
-        driver.findElement(By.xpath("//input[@id='LastName']")).sendKeys("Petrov");
+        type(By.xpath("//input[@id='LastName']"), "Petrov");
         // email
-        driver.findElement(By.xpath("//input[@id='Email']")).click();
-        driver.findElement(By.xpath("//input[@id='Email']")).clear();
-        driver.findElement(By.xpath("//input[@id='Email']")).sendKeys("petrov@gmail.com");
+        type(By.xpath("//input[@id='Email']"), "petrov@gmail.com");
+
         //password
-        driver.findElement(By.xpath("//input[@id='Password']")).click();
-        driver.findElement(By.xpath("//input[@id='Password']")).clear();
-        driver.findElement(By.xpath("//input[@id='Password']")).sendKeys("Petrov123$");
+        type(By.xpath("//input[@id='Password']"), "Petrov123$");
         //confirm password
-        driver.findElement(By.xpath("//input[@id='ConfirmPassword']")).click();
-        driver.findElement(By.xpath("//input[@id='ConfirmPassword']")).clear();
-        driver.findElement(By.xpath("//input[@id='ConfirmPassword']")).sendKeys("Petrov123$");
+        type(By.xpath("//input[@id='ConfirmPassword']"), "Petrov123$");
         // registration button
-        driver.findElement(By.xpath("//input[@id='register-button']")).click();
+        click(By.xpath("//input[@id='register-button']"));
 
         Assert.assertTrue(isElementPresent(By.cssSelector(".result")));
 
     }
+
 }
