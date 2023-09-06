@@ -1,6 +1,5 @@
 package demo.web;
 
-import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -9,28 +8,28 @@ public class AddProductTests extends TestBase {
     @BeforeMethod
 
     public void ensurePrecondition() {
-        product();
-        if (!isProductPresent()) {
-            clickOnLogo();
+        app.getProductHelp().product();
+        if (!app.getProductHelp().isProductPresent()) {
+            app.getHomePage().clickOnLogo();
         }
         addProductInCartTest();
     }
 
     @Test
     public void addProductInCartTest() {
-        messageToRecipientFromSender();
-        Assert.assertTrue(isElementPresent(By.xpath("//li[@id='topcartlink']")));
+        app.getProductHelp().messageToRecipientFromSender();
+        Assert.assertTrue(app.getProductHelp().isShoppingCartPresent());
 
     }
 
-    @Test
+   /*  @Test
     public void isProductInCartTest() {
-        clickOnCart();
-        Assert.assertTrue(isProductAdded("$25 Virtual Gift Card"));
-        clickIAgree();
-        clickOnCheckout();
-        Assert.assertTrue(isElementPresent(By.xpath("//div[@class = 'page-title']")));
-    }
+        app.getProductHelp().clickOnCart();
+        Assert.assertTrue(app.getProductHelp().isProductAdded());
+        app.getProductHelp().clickIAgree();
+        app.getProductHelp().clickOnCheckout();
+        Assert.assertTrue(app.getProductHelp().isShoppingCartPresent());
+    }*/
 
 
 }

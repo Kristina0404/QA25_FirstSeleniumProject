@@ -1,7 +1,7 @@
 package demo.web;
 
 
-import org.openqa.selenium.By;
+import org.ait.demo.models.User;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -11,17 +11,26 @@ public class LoginTests extends TestBase {
     @BeforeMethod
 
     public void ensurePrecondition() {
-        if( !isLoginLinkPresent()) {
-            clickOnLogOutButton();
+        if( !app.getUser().isLoginLinkPresent()) {
+            app.getUser().clickOnLogOutButton();
         }
-        clickOnLogInLink();
+        app.getUser().clickOnLogInLink();
     }
 
     @Test
     public void LoginPositiveTest() {
-        fillLoginForm("petrov@gmail.com", "Petrov123$");
-        clickOnLogInButton();
-        Assert.assertTrue(isElementPresent(By.xpath("//a[text()='Log out']")));
+        app.getUser().fillLoginForm(new User()
+                .setEmail("petrov@gmail.com")
+                .setPassword("Petrov123$"));
+        app.getUser().clickOnLogInButton();
+        Assert.assertTrue(app.getUser().isLogOutButtonPresent());
     }
+    @Test
+    public void LoginNegativeWithoutEmailTest() {
+        app.getUser().fillLoginForm(new User().setPassword("Petrov123$"));
+        app.getUser().clickOnLogInButton();
+        Assert.assertTrue(app.getUser().isLoginLinkPresent());
+    }
+
 
 }
